@@ -1,6 +1,6 @@
 gem 'sinatra'
 gem 'redcarpet'
-gem 'spandex', :git => 'git://github.com/icambron/spandex.git'
+gem 'spandex'
 gem 'tilt'
 gem 'haml'
 gem 'sass'

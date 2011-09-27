@@ -1,11 +1,3 @@
-GIT
-  remote: git://github.com/icambron/spandex.git
-  revision: 0f1877f51396e43a311aabe65c0347075ab779f9
-  specs:
-    spandex (0.0.1)
-      ratom
-      tilt
-
 GEM
   specs:
     haml (3.1.2)
@@ -18,6 +10,9 @@ GEM
     sinatra (1.2.6)
       rack (~> 1.1)
       tilt (< 2.0, >= 1.2.2)
+    spandex (0.0.2)
+      ratom
+      tilt
     tilt (1.3.3)
 
 PLATFORMS
@@ -28,5 +23,5 @@ DEPENDENCIES
   redcarpet
   sass
   sinatra
-  spandex!
+  spandex
   tilt
