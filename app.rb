@@ -1,27 +1,28 @@
-require 'sinatra'
-require 'spandex'
-require 'haml'
-require 'date'
-
-content_dir = File.expand_path('content', File.dirname(__FILE__))
-@@spandex = Spandex.new(content_dir)
+configure do
+  content_dir = File.expand_path('content', File.dirname(__FILE__))
+  set spandex: Spandex.new(content_dir)
+end
 
 get '/' do
-  posts = @@spandex.all_articles
-  haml :index, :locals => {:posts => posts}
+  posts = settings.spandex.all_articles
+  haml :index, locals: {posts: posts}
 end
 
 get '/feed.xml' do
-  content_type :xml, :charset => 'utf-8'
-  @@spandex.atom_feed(10, 'Tiny Blog of Doom!', 'Your name here', 'tinyblog.net', '/feed.xml')
+  content_type :xml, charset: 'utf-8'
+  settings.spandex.atom_feed(10, 'Tiny Blog of Doom!', 'Your name here', 'tinyblog.net', '/feed.xml')
 end
 
 get '/css/:sheet.css' do
-  content_type 'text/css', :charset => 'utf-8'
+  content_type 'text/css', charset: 'utf-8'
   scss params[:sheet].to_sym
 end
 
-get '*' do
-  post = @@spandex.get(params[:splat][0])
-  haml :page, :locals => {:post =>  post, :show_comments => true}
+get '/*' do
+  post = settings.spandex.get(params[:splat][0])
+  if post
+    haml :page, locals: {post:  post, show_comments: true}
+  else
+    halt 404
+  end
 end

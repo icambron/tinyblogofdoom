@@ -21,4 +21,4 @@ Tinyblogofdoom is a very small blog. Not a blog engine, but an actual blog. I've
  1. Get the code: `git clone git@github.com:icambron/tinyblogofdoom.git`
  2. Make you have some basics: `gem install shotgun bundler`
  3. Install the dependencies: `bundle install`
- 4. Launch it: `shotgun config.ru`
+ 4. Launch it: `foreman start`

@@ -1,8 +1,8 @@
 %h2
-  %a{:href => post.path}= post.title
+  %a{href: post.path}= post.title
 %div= post.body
 - if show_comments && ENV["DISQUS_NAME"]
   - if Sinatra::Application.environment == :development
     %script var disqus_developer = true;
   #disqus_thread
-  %script{:type => 'text/javascript', :src => "http://#{ENV['DISQUS_NAME']}.disqus.com/embed.js", :async => true}
+  %script{type: 'text/javascript', src: "http://#{ENV['DISQUS_NAME']}.disqus.com/embed.js", async: true}
